@@ -42,42 +42,35 @@ columns_sim = ['0', '1', '2', '01', '12', '02', 'T01', 'T02', 'T21', 'phi1', 'ps
 
 structures_list_sim = df_simple.drop(['un_poly'], axis=1).values.tolist()
 structures_list_mon = df_monolith.values.tolist()
-structures = structures_list_mon
-columns = columns_mon
+paths = ['h1_sim_db.csv', 'h1_mon_db.csv']
+structures_list = [structures_list_sim, structures_list_mon]
+columns_list = [columns_sim, columns_mon]
 
 #SELEZIONARE LE IMPOSTAZIONI
-path = 'h1_sim_db.csv' #'h1_sim_db.csv'
-selected_dataframe = pd.read_csv(path, sep=',')
-structures = structures_list_sim #structures_list_sim
-columns = columns_sim #columns_sim
 
-h1_con_name = 'malcev' #'Gumm', ecc
-h1_identities = "m(xxy) = m(yxx) = m(yyy)" #"s(xy) = s(yx)"
+h1_con_name = ['malcev', 'gumm'] #['malcev', 'gumm']
+h1_identities = ["m(xxy) = m(yxx) = m(yyy)", "s(xy) = s(yx)"] #["m(xxy) = m(yxx) = m(yyy)", "s(xy) = s(yx)"]
 
+for (path, structures, columns) in zip(paths, structures_list, columns_list):
+    selected_dataframe = pd.read_csv(path, sep=',')
+    for (m_cond, identities) in zip(h1_con_name, h1_identities):
+        structure_type = []
+        for structure_rel in structures:
+            structure_rel = structure_rel[0:len(columns)]
+            relations_list = [relations[rel] for (flag, rel) in zip(structure_rel, columns) if flag != 0]
+            structure = Structure(
+                    (0, 1, 2),
+                    relations_list,
+                    flag=True,
+                    )
 
-
-structure_type = []
-
-for structure_rel in structures:
-    structure_rel[0:len(columns)]
-    relations_list = [relations[rel] for (flag, rel) in zip(structure_rel, columns) if flag != 0]
-    structure = Structure(
-            (0, 1, 2),
-            relations_list,
-            flag=True,
-            )
-
-    solution = check_minor_condition(
-        structure, structure,
-        parse_identities(
-            h1_identities))
-    if solution is not None:
-        structure_type.append(1)
-        continue
-    else:
-        structure_type.append(0)
-
-
-
-selected_dataframe[h1_con_name] = structure_type
-selected_dataframe.to_csv(path, index=False)
+            solution = check_minor_condition(
+                structure, structure,
+                parse_identities(identities))
+            if solution is not None:
+                structure_type.append(1)
+                continue
+            else:
+                structure_type.append(0)
+        selected_dataframe[m_cond] = structure_type
+    selected_dataframe.to_csv(path, index=False)
