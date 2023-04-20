@@ -2,6 +2,8 @@ import pandas as pd
 import itertools
 import torch
 import string
+from pcsptools.polymorphisms import LabelCover
+
 
 '''
 Get generators from a list of generators
@@ -71,6 +73,7 @@ def get_tuples_of_variables(arity, terms):
     term_list = [term_dict[i] +"("+variables+")" for (i, variables) in itertools.product(range(terms), tuples_list)]
     return term_list
 
+
 def get_all_equations(arity, terms):
     tuples_list = get_tuples_of_variables(arity, terms)
     equations_list = [term1+' = '+term2 for (term1, term2) in itertools.product(tuples_list, tuples_list)]
@@ -79,6 +82,84 @@ def get_all_equations(arity, terms):
         # Generating sub list
         comb_equations += [list(j) for j in itertools.combinations(equations_list, i)]
     return comb_equations
+
+
+def parse_identities(*args):
+    """ parses identities from strings to an LC instance:
+        each arg contains a bunch of linked identities, e.g.
+        'm(x, x, y) = m(x, y, x) = m(y, x, x)', or
+        '   s(123,123)=s(231,321) '"""
+    fs, constraints = dict(), list()
+    if isinstance(args[0], list):
+        args = tuple(args[0])
+
+    for id_no, line in enumerate(args):
+        terms, xs = [], set()
+        state, fargs = 1, ""
+        for i, char in enumerate(line):
+            if state == 0:
+                if char == ' ':
+                    continue
+                if char == '=':
+                    state = 1
+                else:
+                    raise ValueError(
+                        f"Unexpected character '{char}' at {id_no}:{i}.")
+            elif state == 1:
+                if char in " ":
+                    continue
+                if char in string.ascii_letters:
+                    f = char
+                    state = 2
+                else:
+                    raise ValueError(
+                        f"Unexpected character '{char}' at {id_no}:{i}.")
+            elif state == 2:
+                if char == ' ':
+                    continue
+                if char == '(':
+                    state = 3
+            elif state == 3:
+                if char in " ,":
+                    continue
+                if char in string.ascii_letters or char in string.digits:
+                    fargs += char
+                    xs.add(char)
+                elif char == ")":
+                    if len(fargs) == 0:
+                        raise ValueError(
+                            f"Unexpected character '{char}' at {id_no}:{i}.")
+                    if f in fs and fs[f] != len(fargs):
+                        raise ValueError(
+                            f"'{f}' has ambiguous arity.")
+                    else:
+                        fs[f] = len(fargs)
+                    terms.append((f, fargs[:]))
+                    fargs = ""
+                    state = 0
+                else:
+                    raise ValueError(
+                        f"Unexpected character '{char}' at {id_no}:{i}.")
+        if state == 1:
+            raise ValueError("Trailing '='?")
+        elif state == 2:
+            raise ValueError("Expected '(', but the string ended.")
+        elif state == 3:
+            raise ValueError("Expected ')', but the string ended.")
+        elif len(terms) == 1:
+            raise ValueError("One term does not form an equation!")
+        elif state != 0:
+            raise ValueError("Unexpected state at the end of string.")
+
+        fs[f'i{id_no}'] = len(xs)
+        x_to_i = {x: i for i, x in enumerate(xs)}
+
+        for f, fargs in terms:
+            constraints.append((
+                (f, f'i{id_no}'),
+                tuple((i, x_to_i[x]) for i, x in enumerate(fargs))))
+
+    return LabelCover(fs.items(), constraints)
 
 
 

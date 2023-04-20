@@ -1,8 +1,8 @@
 import pandas as pd
-from pcsptools import Structure, polymorphisms, parse_identities, check_minor_condition
-from pcsptools.solver import pyco_solver
+from pcsptools import Structure, check_minor_condition
 import ast
 import json
+from utils import parse_identities
 df_monolith = pd.read_csv('databases/h1_mon_db.csv', sep=',')
 df_simple = pd.read_csv('databases/h1_sim_db.csv', sep=',')
 
@@ -64,7 +64,7 @@ columns_list = [columns_sim, columns_mon]
 
 for (path, structures, columns) in zip(paths, structures_list, columns_list):
     selected_dataframe = pd.read_csv(path, sep=',')
-    for (m_cond, identities) in zip(h1_con_name, h1_identities):
+    for (m_cond, identities) in zip(h1_con_name[4], h1_identities[4]):
         structure_type = []
         for structure_rel in structures:
             structure_rel = structure_rel[0:len(columns)]
@@ -74,19 +74,29 @@ for (path, structures, columns) in zip(paths, structures_list, columns_list):
                     relations_list,
                     flag=True,
                     )
-            flag = 1
-            for identity in identities:
-                solution = check_minor_condition(
-                    structure, structure,
-                    parse_identities(identity))
-                if solution is not None:
-                    #structure_type.append(1)
-                    continue
-                else:
-                    structure_type.append(0)
-                    flag = 0
-                    break
-            if flag == 1:
+            # solution = check_minor_condition(
+            #     structure, structure,
+            #     parse_identities('m(xxy) = m(yxx)', 's(xy) = s(yx)'))
+            solution = check_minor_condition(
+                        structure, structure,
+                        parse_identities(identities))
+            if solution is not None:
                 structure_type.append(1)
+            else:
+                structure_type.append(0)
+            # flag = 1
+            # for identity in identities:
+            #     solution = check_minor_condition(
+            #         structure, structure,
+            #         parse_identities(identity))
+            #     if solution is not None:
+            #         #structure_type.append(1)
+            #         continue
+            #     else:
+            #         structure_type.append(0)
+            #         flag = 0
+            #         break
+            # if flag == 1:
+            #     structure_type.append(1)
         selected_dataframe[m_cond] = structure_type
     selected_dataframe.to_csv(path, index=False)
