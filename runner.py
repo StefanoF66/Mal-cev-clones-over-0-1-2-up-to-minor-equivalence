@@ -2,7 +2,7 @@ from pcsptools import Structure, polymorphisms, parse_identities, check_minor_co
 from pcsptools.solver import pyco_solver
 import json
 
-with open('relations.json') as json_file:
+with open('databases/relations.json') as json_file:
     relations = json.load(json_file)
 
 '''

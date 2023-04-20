@@ -40,5 +40,5 @@ tuples = [((0)), ((1)), ((2)), ((0), (1)), ((1), (2)), ((2), (0)), ((0, 0), (1, 
           ]
 
 dictionary = {relations[i]: tuples[i] for i in range(len(relations))}
-with open('relations.json', 'w') as fjson:
+with open('databases/relations.json', 'w') as fjson:
     json.dump(dictionary, fjson)

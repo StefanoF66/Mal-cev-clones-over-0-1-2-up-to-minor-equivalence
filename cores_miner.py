@@ -2,12 +2,12 @@ import pandas as pd
 from pcsptools import Structure, polymorphisms, parse_identities, check_minor_condition
 from pcsptools.solver import pyco_solver
 import json
-df_simple = pd.read_csv('structures_simple.csv', sep=',')
-df_monolith = pd.read_csv('structures_with_monolith.csv', sep=',')
+df_simple = pd.read_csv('databases/structures_simple.csv', sep=',')
+df_monolith = pd.read_csv('databases/structures_with_monolith.csv', sep=',')
 
 
 
-with open('relations.json') as json_file:
+with open('databases/relations.json') as json_file:
     relations = json.load(json_file)
 
 '''

@@ -2,7 +2,7 @@ import pandas as pd
 import re
 import numpy as np
 from itertools import chain, combinations
-df_mon = pd.read_csv('structures_mono_with_poly.csv', sep=',')
+df_mon = pd.read_csv('databases/structures_mono_with_poly.csv', sep=',')
 #df_mon = pd.read_csv('structures_simple_with_poly.csv', sep=',')
 l1 = df_mon['un_poly'].values.tolist()
 l1 = [list(l.replace('[', '').replace(']', '').split('\',')) for l in l1]
