@@ -1,5 +1,6 @@
 import pandas as pd
-from pcsptools import Structure, check_minor_condition
+from pcsptools import check_minor_condition
+from structure import Structure
 import ast
 import json
 from utils import parse_identities
@@ -44,7 +45,7 @@ columns_mon = ['0', '1', '2', '01', '12', '02', 'psi2', 'tau1', 'tau2', 'psi’2
 columns_sim = ['0', '1', '2', '01', '12', '02', 'T01', 'T02', 'T21', 'phi1', 'psi0', 'psi1', 'psi2', 'psi’0', 'psi’1',
                'psi’2', 'phi’1', 'phi’2', 'phi’3', 'phi’4', 'phi’5', 'phi’6']
 
-h1_df = pd.read_csv('databases/h1_identities.csv')
+h1_df = pd.read_csv('databases/h1_identities.csv').head(10)
 h1_list = h1_df.values.tolist()
 h1_con_name = [l[0] for l in h1_list]
 h1_identities = [ast.literal_eval(l[1]) for l in h1_list]
@@ -57,6 +58,9 @@ paths = ['databases/h1_sim_db.csv', 'databases/h1_mon_db.csv']
 structures_list = [structures_list_sim, structures_list_mon]
 columns_list = [columns_sim, columns_mon]
 
+for id in h1_identities:
+    a = parse_identities(id)
+
 #SELEZIONARE LE IMPOSTAZIONI
 
 #h1_con_name = ['malcev', 'gumm'] #['malcev', 'gumm']
@@ -64,7 +68,7 @@ columns_list = [columns_sim, columns_mon]
 
 for (path, structures, columns) in zip(paths, structures_list, columns_list):
     selected_dataframe = pd.read_csv(path, sep=',')
-    for (m_cond, identities) in zip(h1_con_name[4], h1_identities[4]):
+    for (m_cond, identities) in zip(h1_con_name, h1_identities):
         structure_type = []
         for structure_rel in structures:
             structure_rel = structure_rel[0:len(columns)]
@@ -98,5 +102,7 @@ for (path, structures, columns) in zip(paths, structures_list, columns_list):
             #         break
             # if flag == 1:
             #     structure_type.append(1)
+        #print(structure_type)
         selected_dataframe[m_cond] = structure_type
+        print(m_cond)
     selected_dataframe.to_csv(path, index=False)
