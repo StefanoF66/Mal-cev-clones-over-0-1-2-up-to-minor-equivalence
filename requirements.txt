@@ -1,0 +1,9 @@
+numpy==1.23.5
+pandas==1.5.2
+pcsptools @ git+https://github.com/jakub-oprsal/pcsptools@e4cc3b886106a36b3da8f5643da8481ff66d7b06
+pycosat==0.6.3
+python-dateutil==2.8.2
+pytz==2022.6
+six==1.16.0
+torch==1.13.0
+typing_extensions==4.4.0
