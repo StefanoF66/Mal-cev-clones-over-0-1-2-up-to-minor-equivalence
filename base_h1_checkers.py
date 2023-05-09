@@ -45,7 +45,7 @@ columns_mon = ['0', '1', '2', '01', '12', '02', 'psi2', 'tau1', 'tau2', 'psi’2
 columns_sim = ['0', '1', '2', '01', '12', '02', 'T01', 'T02', 'T21', 'phi1', 'psi0', 'psi1', 'psi2', 'psi’0', 'psi’1',
                'psi’2', 'phi’1', 'phi’2', 'phi’3', 'phi’4', 'phi’5', 'phi’6']
 
-h1_df = pd.read_csv('databases/h1_identities.csv').head(10)
+h1_df = pd.read_csv('databases/h1_identities.csv').iloc[30:50]
 h1_list = h1_df.values.tolist()
 h1_con_name = [l[0] for l in h1_list]
 h1_identities = [ast.literal_eval(l[1]) for l in h1_list]
@@ -54,12 +54,10 @@ h1_identities = [[' = '.join(l) for l in eqs] for eqs in h1_identities]
 
 structures_list_sim = df_simple.drop(['un_poly'], axis=1).values.tolist()
 structures_list_mon = df_monolith.values.tolist()
-paths = ['databases/h1_sim_db.csv', 'databases/h1_mon_db.csv']
-structures_list = [structures_list_sim, structures_list_mon]
-columns_list = [columns_sim, columns_mon]
+paths = ['databases/h1_mon_db.csv']#['databases/h1_sim_db.csv', 'databases/h1_mon_db.csv']
+structures_list = [structures_list_mon]#[structures_list_sim, structures_list_mon]
+columns_list = [columns_mon]#[columns_sim, columns_mon]
 
-for id in h1_identities:
-    a = parse_identities(id)
 
 #SELEZIONARE LE IMPOSTAZIONI
 
