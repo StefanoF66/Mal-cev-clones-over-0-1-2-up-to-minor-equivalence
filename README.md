@@ -34,7 +34,9 @@ The `Structures_databases` directory contains **relational structure invariants*
      - Core cardinalities.  
      - Minor equivalence classes of the cores (when the structure is not already a core).  
      - \( h-1 \) conditions satisfied (as per the characterization in [REFERENCE]).  
-     - Minor equivalence classification.  
+     - Minor equivalence classification.
+
+   2. The first list restricted to idempotent 3-element cores (the ones that are most relevant for our paper).
 
 ---
 
