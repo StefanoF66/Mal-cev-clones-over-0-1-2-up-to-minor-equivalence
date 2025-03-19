@@ -3,7 +3,7 @@
 This repository contains databases related to **Mal'cev clones** on a 3-element set, classified up to **minor equivalence**. The data is organized into three directories, each providing different aspects of the classification.  
 
 ## **1. Standard Relations**  
-The `Standard_relations` directory contains a JSON file that lists all relations used by **A. Bulatov** in [REFERENCE] to characterize Mal'cev clones on a 3-element set.  
+The `Standard_relations` directory contains a JSON file that lists all relations used by **A. Bulatov** in *Three-element Mal′tsev algebras.* Acta Sci. Math. (Szeged), 71(3-4):469–500, 2005. to characterize Mal'cev clones on a 3-element set.  
 
 ## **2. Functional Generators**  
 The `Functional_generators` directory includes data on functional generators of polymorphism clones, structured as follows:  
@@ -33,7 +33,7 @@ The `Structures_databases` directory contains **relational structure invariants*
      - Unary polymorphisms.  
      - Core cardinalities.  
      - Minor equivalence classes of the cores (when the structure is not already a core).  
-     - \( h-1 \) conditions satisfied (as per the characterization in [REFERENCE]).  
+     - height-1 conditions satisfied (as per the characterization in [REFERENCE]).  
      - Minor equivalence classification.
 
    2. The first list restricted to idempotent 3-element cores (the ones that are most relevant for our paper).
@@ -41,4 +41,9 @@ The `Structures_databases` directory contains **relational structure invariants*
 ---
 
 This structured dataset provides a valuable resource for researchers studying Mal'cev clones and their functional representations.
+
+
+## References  
+
+- A. Bulatov. *Three-element Mal′tsev algebras.* Acta Sci. Math. (Szeged), 71(3-4):469–500, 2005.
 
