@@ -1,4 +1,4 @@
-{0};{1};{2};{0,1};{1,2};{0,2};psi_2;tau_1;tau_2;psi’_2;rho_1;S_01;T_01;T_1;T’_1;Minority;Majority;f(x)=f(y);2-cyclic;3-cyclic;2-Symmetric-Majority;Zhuk-5-symmetric;Minor-equivalence-class
+{0};{1};{2};{0,1};{1,2};{0,2};psi_2;tau_1;tau_2;psi’_2;rho_1;S_01;T_01;T_1;T’_1;quasi-Minority;quasi-Majority;f(x)=f(y);2-cyclic;3-cyclic;2-Symmetric-Majority;Zhuk-5-symmetric;Minor-equivalence-class
 0;0;0;0;0;0;0;0;0;0;1;0;0;0;0;1;1;0;0;1;1;1;C_2
 0;0;0;0;0;1;0;0;0;0;1;0;0;1;0;1;1;0;0;1;1;1;C_2
 0;0;0;1;0;0;0;0;0;1;0;0;0;0;1;1;1;0;0;1;1;1;C_2
