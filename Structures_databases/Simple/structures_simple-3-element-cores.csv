@@ -1,4 +1,4 @@
-"{0}";"{1}";"{2}";"{0,1}";"{1,2}";"{0,2}";"T_01";"T02";"T21";"phi_1";"psi_0";"psi_1";"psi_2";"psi’_0";"psi’_1";"psi’_2";"phi’_1";"phi’_2";"phi’_3";"phi’_4";"phi’_5";"phi’_6";"Majority";"f(x)=f(y)";"2-cyclic";"3-cyclic";"2-Symmetric-Majority";"Zhuk-5-symmetric";"Minor-equivalence-class"
+"{0}";"{1}";"{2}";"{0,1}";"{1,2}";"{0,2}";"T_01";"T02";"T21";"phi_1";"psi_0";"psi_1";"psi_2";"psi’_0";"psi’_1";"psi’_2";"phi’_1";"phi’_2";"phi’_3";"phi’_4";"phi’_5";"phi’_6";"quasi-Majority";"f(x)=f(y)";"2-cyclic";"3-cyclic";"2-Symmetric-quasi-Majority";"Zhuk-5-symmetric";"Minor-equivalence-class"
 0;0;1;1;0;0;0;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0;1;1;0;0;1;1;1;C_2
 1;1;1;1;1;1;0;0;0;0;0;0;0;1;1;1;0;0;0;0;0;0;1;1;0;0;1;1;1;C_2
 1;1;1;1;1;1;0;0;0;0;0;0;1;1;1;1;0;0;0;0;1;1;1;1;0;0;1;1;1;C_2
