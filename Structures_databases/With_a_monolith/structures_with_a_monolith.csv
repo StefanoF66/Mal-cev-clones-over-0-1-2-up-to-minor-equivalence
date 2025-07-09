@@ -1,4 +1,4 @@
-{0};{1};{2};{0,1};{1,2};{0,2};psi_2;tau_1;tau_2;psi’_2;rho_1;S_01;T_01;T_1;T’_1;Unary_polymorphisms;Cores'_Cardinality;Class_of_Pol(R)_if_not_core;Minority;Majority;f(x)=f(y);2-cyclic;3-cyclic;2-Symmetric-Majority;Zhuk-5-symmetric;Minor-equivalence-class
+"{0}";"{1}";"{2}";"{0,1}";"{1,2}";"{0,2}";"psi_2";"tau_0";"tau_1";"psi’_2";"rho_2";"S_01";"T'_2";"T_2";T^mu2;Unary_polymorphisms;Cores'_Cardinality;Class_of_Pol(R)_if_not_core;Minority;Majority;f(x)=f(y);2-cyclic;3-cyclic;2-Symmetric-Majority;Zhuk-5-symmetric;Minor-equivalence-class
 0;0;0;0;0;0;0;0;0;0;1;0;0;0;0;['001022', '001122', '021221', '011122', '011022', '021220'];2;[d_3, m];1;1;0;0;1;1;1;C_2
 0;0;0;0;0;1;0;0;0;0;1;0;0;1;0;['001022', '001122', '021220'];2;[d_3, m];1;1;0;0;1;1;1;C_2
 0;0;0;1;0;0;0;0;0;1;0;0;0;0;1;['001120', '001122', '001121', '011021', '011022', '011020'];2;[d_3, m];1;1;0;0;1;1;1;C_2
