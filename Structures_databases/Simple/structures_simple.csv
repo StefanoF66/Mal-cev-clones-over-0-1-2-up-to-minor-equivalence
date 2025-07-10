@@ -1,4 +1,4 @@
-"{0}";"{1}";"{2}";"{0,1}";"{1,2}";"{0,2}";"T'_2";"T'_1";"T'_0";"phi";"psi_0";"psi_1";"psi_2";"psi’_0";"psi’_1";"psi’_2";"phi’_3";"phi’_1";"phi’_2";"phi’_4";"phi’_5";"phi’_0";"Unary_polymorphisms";"Cores'_Cardinality";"Class_of_Pol(R)_if_not_core";"quasi-Minority";"quasi-Majority";"f(x)=f(y)";"2-cyclic";"3-cyclic";"2-Symmetric-quasi-Majority";"Zhuk-5-symmetric";"Minor-equivalence-class"
+"{0}";"{1}";"{2}";"{0,1}";"{1,2}";"{0,2}";"T'_2";"T'_1";"T'_0";"phi";"psi_0";"psi_1";"psi_2";"psi’_0";"psi’_1";"psi’_2";"phi’_3";"phi’_1";"phi’_2";"phi’_4";"phi’_5";"phi’_0";"Unary_polymorphisms";"Cores'_Cardinality";"Class_of_Pol(R)_if_not_core";"quasi-Minority";"quasi-Majority";"f(x)=f(y)";"2-cyclic";"3-cyclic";"Sigma_1";"Sigma_2";"Minor-equivalence-class"
 0;0;1;1;0;0;0;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0;['001122', '011022'];3;3-core;1;1;0;0;1;1;1;C_2
 1;1;1;1;1;1;0;0;0;0;0;0;0;1;1;1;0;0;0;0;0;0;['001122'];3;3-core;1;1;0;0;1;1;1;C_2
 1;1;1;1;1;1;0;0;0;0;0;0;1;1;1;1;0;0;0;0;1;1;['001122'];3;3-core;1;1;0;0;1;1;1;C_2
